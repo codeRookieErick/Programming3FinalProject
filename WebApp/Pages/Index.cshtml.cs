@@ -32,7 +32,7 @@ namespace WebApp.Pages
 
         public string FormatAmount(decimal value)
         {
-            return value < 0 ? $"-RD${(value*-1):###,###,###.##}" : $"RD${value:###,###,###.##}";
+            return value < 0 ? $"-RD${(value*-1):#,##0.00}" : $"RD${value:#,##0.00}";
         }
     }
 }

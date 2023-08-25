@@ -17,8 +17,8 @@ public class EmployeeCalculator : IEmployeeCalculator
         decimal percentage = employee.EarningAmount switch
         {
             decimal x when x <= 10000 => -0M,
-            decimal x when x <= 15000 => -0.04M,
-            _ => -0.15M
+            decimal x when x <= 15000 => -0.004M,
+            _ => -0.015M
         };
 
         return employee.EarningAmount * percentage;
