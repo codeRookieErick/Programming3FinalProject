@@ -1,0 +1,100 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    ViewData["Separator"] = ":";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-6">
+            <h3> Datos </h3>
+            <form method="post">
+                <div class="form-group">
+                    <label for="code">C&oacute;digo: </label>
+                    <input type="number" class="form-control" id="code" name="Code" value="@Model.employee.Code" />
+                </div>
+                <div class="form-group">
+                    <label for="firstName">Nombre: </label>
+                    <input type="text" class="form-control" id="firstName" name="FirstName" value="@Model.employee.FirstName" />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Apellido: </label>
+                    <input type="text" class="form-control" id="lastName" name="LastName" value="@Model.employee.LastName" />
+                </div>
+                <div class="form-group">
+                    <label for="pricePerHour">Precio por hora: </label>
+                    <input type="number" class="form-control" id="pricePerHour" name="PricePerHour" value="@Model.employee.PricePerHour" />
+                </div>
+                <div class="form-group">
+                    <label for="hoursCount">Cantidad de horas: </label>
+                    <input type="number" class="form-control" id="hoursCount" name="HoursCount" value="@Model.employee.HoursCount" />
+                </div>
+                <button type="submit" class="btn btn-primary">Calcular</button>
+            </form>
+
+        </div>
+
+        <div class="col-6 col-md-6">
+            <h3> Resultados </h3>
+            <table>
+                <tr>
+                    <td><strong>Nombre</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.employee.FirstName</td>
+                </tr>
+                <tr>
+                    <td><strong>Apellido</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.employee.LastName</td>
+                </tr>
+                <tr>
+                    <td><strong>Cantidad de horas</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.employee.HoursCount Horas</td>
+                </tr>
+                <tr>
+                    <td><strong>Precio por horas</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.FormatAmount(@Model.employee.PricePerHour)</td>
+                </tr>
+                <tr>
+                    <td><strong>Monto Ganado</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.FormatAmount(@Model.employee.EarningAmount)</td>
+                </tr>
+                <tr>
+                    <td><strong>Incentivos</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.FormatAmount(@Model.employee.Incentives)</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Ganado</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success">@Model.FormatAmount(@Model.employee.TotalEarning)</td>
+                </tr>
+                <tr>
+                    <td><strong>ISR</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-danger">@Model.FormatAmount(@Model.employee.IncomeTax)</td>
+                </tr>
+                <tr>
+                    <td><strong>Avances</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-danger">@Model.FormatAmount(@Model.employee.CashAdvances)</td>
+                </tr>
+                <tr>
+                    <td><strong>Total deducciones</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-danger">@Model.FormatAmount(@Model.employee.TotalDeductions)</td>
+                </tr>
+                <tr>
+                    <td><strong>Total a recibir</strong></td>
+                    <td>@ViewData["Separator"]</td>
+                    <td class="text-success font-weight-bold">@Model.FormatAmount(@Model.employee.TotalToReceive)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
